@@ -1,8 +1,9 @@
 import React from "react";
 import Chart from "../chart/chart.component";
-import "./chartContainer.styles.scss";
+import Form from "../form/form.component";
+import "./container.styles.scss";
 
-export default class ChartContainer extends React.Component {
+export default class Container extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -10,6 +11,7 @@ export default class ChartContainer extends React.Component {
         uptime: "500",
         latency: "1230",
       },
+      lastUpdated: "",
     };
   }
 
@@ -19,11 +21,19 @@ export default class ChartContainer extends React.Component {
     });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('Submitted')
+  }
+
   render() {
     const formattedData = this.formatData(this.state.metrics);
     return (
       <div>
-        <Chart data={formattedData}> Last Hour</Chart>
+        <Form className="metric-form" onSubmit={this.handleSubmit} />
+        <Chart className="metric-chart" data={formattedData}>
+          Last Hour Metrics
+        </Chart>
       </div>
     );
   }
