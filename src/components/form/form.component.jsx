@@ -14,7 +14,6 @@ const Form = ({onSubmit}) => (
       prefix="metric-value"
       placeholder="Value"
       >Value: </FormInput>
-
     <CustomButton type='submit'>Send</CustomButton>
   </form>
 );
